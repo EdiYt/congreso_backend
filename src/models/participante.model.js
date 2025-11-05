@@ -11,7 +11,7 @@ async function getParticipanteById(id){
 }
 
 async function createParticipante(data){
-    const query = 'INSERT INTO participante (participante_id, nombre, apellidos, email, usuario_twitter, ocupacion VALUES (?,?,?,?,?,?))';
+    const query = 'INSERT INTO participante (participante_id, nombre, apellidos, email, usuario_twitter, ocupacion) VALUES (?,?,?,?,?,?)';
     const [result] = await pool.query(query, [
         data.participante_id,
         data.nombre,
@@ -20,7 +20,6 @@ async function createParticipante(data){
         data.usuario_twitter,
         data.ocupacion
     ])
-
     return { id: result.insertId }
 }
 
