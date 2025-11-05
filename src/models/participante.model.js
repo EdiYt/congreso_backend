@@ -23,3 +23,9 @@ async function createParticipante(data){
 
     return { id: result.insertId }
 }
+
+module.exports = {
+    getAllParticipantes,
+    getParticipanteById,
+    createParticipante
+};
