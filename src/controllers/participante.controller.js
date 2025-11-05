@@ -21,3 +21,26 @@ exports.getParticipantesById = async (req, res) => {
         res.status(500).json({ error: 'Error al obtener participante por ID' })
     }
 };
+
+exports.createParticipante = async (req, res) => {
+    try {
+        const data = req.body;
+        const participanteCreado = await Participante.createParticipante(data);
+        res.status(201).json(participanteCreado);
+    } catch (err) {
+        res.status(500).json({ error: 'Error al crear participante' });
+    }
+};
+
+exports.searchParticipantes = async (req, res) => {
+    try {
+        const query = req.query.q;
+        if (!query) {
+            return res.status(400).json({ error: 'Se requiere parámetro de búsqueda' });
+        }
+        const participantes = await Participante.buscarParticipantesByName(query);
+        res.json(participantes);
+    } catch (err) {
+        res.status(500).json({ error: 'Error al buscar participantes' });
+    }
+};

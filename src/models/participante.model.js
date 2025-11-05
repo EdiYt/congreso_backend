@@ -24,8 +24,18 @@ async function createParticipante(data){
     return { id: result.insertId }
 }
 
+async function buscarParticipantesByName(name) {
+    const searchTerm = `%${name}%`;
+    const [rows] = await pool.query(
+        'SELECT * FROM participante WHERE nombre LIKE ?',
+        [searchTerm]
+    );
+    return rows;
+}
+
 module.exports = {
     getAllParticipantes,
     getParticipanteById,
-    createParticipante
+    createParticipante, 
+    buscarParticipantesByName
 };
