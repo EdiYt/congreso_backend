@@ -18,7 +18,8 @@ async function createParticipante(data){
         data.apellidos,
         data.email,
         data.usuario_twitter,
-        data.ocupacion
+        data.ocupacion,
+        data.avatar
     ])
     return { id: result.insertId }
 }
