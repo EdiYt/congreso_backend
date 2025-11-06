@@ -25,6 +25,8 @@ exports.getParticipantesById = async (req, res) => {
 exports.createParticipante = async (req, res) => {
     try {
         const data = req.body;
+        const avatarPath = req.file ? `/uploads/avatars/${req.file.filename}` : null;
+        data.avatar = avatarPath;
         const participanteCreado = await Participante.createParticipante(data);
         res.status(201).json(participanteCreado);
     } catch (err) {

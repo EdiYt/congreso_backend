@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const participanteController = require('../controllers/participante.controller');
+const upload = require('../middleware/upload');
 
 router.get('/listado', participanteController.getParticipantes);
 router.get('/participante/:id', participanteController.getParticipantesById);
-router.post('/registro', participanteController.createParticipante);
+router.post('/registro', upload.single('avatar'), participanteController.createParticipante);
 router.get('/listado/buscar', participanteController.searchParticipantes);
 
 module.exports = router;
