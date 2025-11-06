@@ -8,3 +8,7 @@ npm-debug.log*
 
 *.tmp
 *.swp
+
+/uploads/avatars/*
+
+!/uploads/avatars/.gitkeep
