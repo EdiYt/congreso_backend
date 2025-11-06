@@ -11,18 +11,18 @@ async function getParticipanteById(id){
 }
 
 async function createParticipante(data){
-    const query = 'INSERT INTO participante (participante_id, nombre, apellidos, email, usuario_twitter, ocupacion) VALUES (?,?,?,?,?,?)';
+    const query = 'INSERT INTO participante (nombre, apellidos, email, usuario_twitter, ocupacion, avatar) VALUES (?,?,?,?,?,?)';
     const [result] = await pool.query(query, [
-        data.participante_id,
         data.nombre,
         data.apellidos,
         data.email,
         data.usuario_twitter,
         data.ocupacion,
         data.avatar
-    ])
+    ]);
     return { id: result.insertId }
 }
+
 
 async function buscarParticipantesByName(name) {
     const searchTerm = `%${name}%`;
