@@ -5,7 +5,7 @@ const upload = require('../middleware/upload');
 
 router.get('/listado', participanteController.getParticipantes);
 router.get('/participante/:id', participanteController.getParticipantesById);
-router.post('/registro', upload.single('avatar'), participanteController.createParticipante);
+router.post('/registro', participanteController.createParticipante);
 router.get('/listado/buscar', participanteController.searchParticipantes);
 
 module.exports = router;
